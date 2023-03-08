@@ -35,12 +35,10 @@ ALL_IDS = operator.get_all_ids()
 
 header = dcc.Markdown(
     """
-    # This is a sample text labeling app, built with [Dash](https://plotly.com/dash/) and [Databricks SQL](https://www.databricks.com/product/databricks-sql) 🔥
+    ## Sample labeling app, built with [Dash](https://plotly.com/dash/) and [Databricks SQL](https://www.databricks.com/product/databricks-sql) 🔥
     """,
     style={
         "font-size": "46px",
-        "padding-left": "2vw",
-        # "background-color": "#1b3139",
         "min-height": "64px",
         "max-height": "96px",
         "padding-top": "16px",
@@ -52,7 +50,6 @@ guideline = dcc.Markdown(
     "Please click below to navigate between texts and correct their class labels if required.",
     style={
         "font-size": "20px",
-        "padding-left": "2vw",
         "padding-top": "20px",
         "padding-bottom": "5px",
     },
@@ -62,7 +59,6 @@ current_index_view = html.Div(
     id="current-index-view",
     style={
         "text-align": "left",
-        "padding-left": "2vw",
     },
 )
 
@@ -75,7 +71,7 @@ text_container = html.Div(
                 style={
                     "font-size": "1.2em",
                     "font-family": "'Noto Sans', sans-serif",
-                    "height": "60vh",
+                    "height": "50vh",
                     "overflow-y": "auto",
                 },
             ),
@@ -145,9 +141,9 @@ confirm_button = dcc.Loading(
 
 app.layout = html.Div(
     [
-        header,
         html.Div(
             [
+                header,
                 guideline,
                 current_index_view,
                 html.Div(
@@ -168,7 +164,8 @@ app.layout = html.Div(
                     style={
                         "display": "flex",
                         "flex-direction": "row",
-                        "padding": "5em",
+                        "padding": "2em",
+                        "margin-bottom": "2em"
                     },
                 ),
                 html.Div(
@@ -176,13 +173,16 @@ app.layout = html.Div(
                     style={
                         "justify-content": "space-evenly",
                         "display": "flex",
-                        "padding-left": "30vw",
-                        "padding-right": "30vw",
                     },
                 ),
                 dcc.Store(id="current-index", data=choice(ALL_IDS)),
             ],
-            style={"padding": "20px", "height": "100%"},
+            style={
+                "padding-top": "1em",
+                "padding-left": "2em",
+                "padding-right": "2em",
+                "padding-bottom": "5em",
+            },
         ),
     ]
 )

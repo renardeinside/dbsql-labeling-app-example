@@ -2,9 +2,12 @@ body {
     background-image: linear-gradient(to right top, #1b3139, #164472, #754293, #d41677, #ff3621);
     color: whitesmoke;
     font-family: 'Inter', sans-serif;
-    height: 100vh;
+    height: 100%;
 }
 
+html {
+    height: 100%;
+}
 
 h1 {
     margin: 0
