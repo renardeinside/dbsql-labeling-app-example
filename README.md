@@ -45,7 +45,7 @@ docker run \
 5. Open [http://localhost:8050](http://localhost:8050) and enjoy the new application 🔥
 6. To stop the app use `Ctrl-C`.
 
-## Developer instructions
+## 🛠️ Developer instructions
 
 - Use the VSCode + DevContainers extension
 - After the start of the DevContainer run this command to open the poetry shell:
@@ -62,7 +62,7 @@ DEBUG=True python dbsql_labeling_app_example/app.py
 
 - For ETL part, check the `dbsql_labeling_app_example/loader.py` source code
 
-## 🛠️ Technologies used
+## 🙌 Technologies used
 
 - [Databricks SQL](https://www.databricks.com/product/databricks-sql)
 - [Databricks SQL Connector](https://docs.databricks.com/dev-tools/python-sql-connector.html)
