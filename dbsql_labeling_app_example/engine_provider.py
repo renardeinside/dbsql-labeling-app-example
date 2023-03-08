@@ -22,7 +22,7 @@ def get_prepared_engine():
     print(f"Using catalog {endpoint_info.catalog}")
     print(f"Using database {endpoint_info.database}")
 
-    ## Set up SQL Alchemy engine
+    # Set up SQL Alchemy engine to create a Database
     pre_engine = create_engine(
         f"databricks://token:{endpoint_info.token}@{endpoint_info.server_hostname}?http_path={endpoint_info.http_path}&catalog={endpoint_info.catalog}",
         echo=debug_mode,
@@ -31,6 +31,7 @@ def get_prepared_engine():
     with pre_engine.connect() as conn:
         conn.execute(f"CREATE DATABASE IF NOT EXISTS {endpoint_info.database}")
 
+    # use the created database
     engine = create_engine(
         f"databricks://token:{endpoint_info.token}@{endpoint_info.server_hostname}?http_path={endpoint_info.http_path}&catalog={endpoint_info.catalog}&schema={endpoint_info.database}",
         echo=debug_mode,

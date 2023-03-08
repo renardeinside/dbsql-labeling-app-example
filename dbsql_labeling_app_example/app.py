@@ -4,17 +4,14 @@ from dash import Dash, Input, Output, State, ctx, dcc, html
 
 from dbsql_labeling_app_example.crud import DataOperator
 from dbsql_labeling_app_example.mode import debug_mode
-from dbsql_labeling_app_example.ui.components import (
-    class_guideline,
-    confirm_button,
-    current_index_view,
-    dropdown,
-    guideline,
-    header,
-    navigation_buttons,
-    text_container,
-)
 from dbsql_labeling_app_example.ui import external_stylesheets
+from dbsql_labeling_app_example.ui.components import (class_guideline,
+                                                      confirm_button,
+                                                      current_index_view,
+                                                      dropdown, guideline,
+                                                      header,
+                                                      navigation_buttons,
+                                                      text_container)
 
 app = Dash(
     __name__, title="Data Labeling App", external_stylesheets=external_stylesheets
