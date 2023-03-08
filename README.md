@@ -51,13 +51,13 @@ docker run \
 - After the start of the DevContainer run this command to open the poetry shell:
 
 ```
-> poetry shell
+poetry shell
 ``` 
 
 - For UI development with hot reloading run:
 
 ```
-> DEBUG=True python dbsql_labeling_app_example/app.py
+DEBUG=True python dbsql_labeling_app_example/app.py
 ```
 
 - For ETL part, check the `dbsql_labeling_app_example/loader.py` source code
