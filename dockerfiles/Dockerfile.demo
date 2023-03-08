@@ -1,0 +1,22 @@
+FROM python:3.9
+
+# install poetry
+ENV POETRY_HOME /opt/poetry
+ENV PATH ${POETRY_HOME}/bin:${PATH}
+RUN apt-get update && apt-get install build-essential -y
+RUN curl -sSL https://install.python-poetry.org | python3 -
+RUN poetry config virtualenvs.create false 
+
+# prepare app folder
+RUN mkdir /app
+WORKDIR /app
+
+# copying relevant package files
+COPY poetry.lock .
+COPY pyproject.toml .
+COPY README.md .
+COPY dbsql_labeling_app_example dbsql_labeling_app_example
+
+# Installing dependencies
+RUN poetry install --no-dev
+ENTRYPOINT [ "poetry", "run"] 

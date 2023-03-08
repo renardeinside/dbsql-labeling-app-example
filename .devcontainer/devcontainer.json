@@ -10,13 +10,21 @@
 	},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	"forwardPorts": [
-		"8080:8080"
+		"8050:8050"
 	],
 
 	"mounts": [
 		"source=${localWorkspaceFolder},target=/app,type=bind,consistency=cached"
 	],	
-	
+
+	"customizations": {
+		// Configure properties specific to VS Code.
+		"vscode": {
+		  // Add the IDs of extensions you want installed when the container is created.
+		  "extensions": ["ms-python.python", "bungcip.better-toml"]
+		}
+	  },
+
 	// Uncomment the next line to run commands after the container is created.
-	"postCreateCommand": "poetry install"
+	"postCreateCommand": "poetry lock && poetry install"
 }
