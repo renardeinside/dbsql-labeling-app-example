@@ -1,5 +1,7 @@
 # Data labeling app example with Python, Dash and Databricks SQL 🔥
 
+Up and running with a data labeling application on top of your Databricks Lakehouse in 5 minutes.
+
 ## ✅ Prerequisites
 
 - Databricks SQL endpoint
