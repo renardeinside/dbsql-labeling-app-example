@@ -9,7 +9,7 @@ Up and running with a data labeling application on top of your Databricks Lakeho
 
 ## 👀 Quick demo
 
-![demo](./raw/demo.gif)
+#TBD
 
 ## 💻 How to 
 
