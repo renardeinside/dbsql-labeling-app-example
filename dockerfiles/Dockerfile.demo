@@ -2,8 +2,10 @@ FROM python:3.9
 
 # install poetry
 ENV POETRY_HOME /opt/poetry
+ENV POETRY_CACHE_DIR /opt/.cache/pypoetry
 ENV PATH ${POETRY_HOME}/bin:${PATH}
-RUN apt-get update && apt-get install build-essential -y
+RUN mkdir -p ${POETRY_CACHE_DIR}
+RUN --mount=type=cache,target=/var/cache/apt apt-get update && apt-get install build-essential -y
 RUN curl -sSL https://install.python-poetry.org | python3 -
 RUN poetry config virtualenvs.create false 
 
@@ -18,5 +20,5 @@ COPY README.md .
 COPY dbsql_labeling_app_example dbsql_labeling_app_example
 
 # Installing dependencies
-RUN poetry install --no-dev
+RUN --mount=type=cache,target=${POETRY_CACHE_DIR} poetry install --no-dev
 ENTRYPOINT [ "poetry", "run"] 

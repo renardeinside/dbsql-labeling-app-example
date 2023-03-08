@@ -41,7 +41,7 @@ docker run \
 ```
 
 5. Open [http://localhost:8050](http://localhost:8050) and enjoy the new application 🔥
-
+6. To stop the app use `Ctrl-C`.
 
 ## Developer instructions
 

@@ -9,7 +9,9 @@ from dbsql_labeling_app_example.engine import Label, engine
 
 class DataOperator:
     def __init__(self) -> None:
+        print("Initializing the session for CRUD operator")
         self._session = Session(bind=engine)
+        print("Session initialized")
 
     def get_all_ids(self) -> List[int]:
         return self._session.execute(select(Label.label_id)).scalars().all()
