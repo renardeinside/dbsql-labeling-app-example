@@ -9,7 +9,7 @@ Up and running with a data labeling application on top of your Databricks Lakeho
 
 ## 👀 Quick demo
 
-#TBD
+[Screen Recording 2023-03-08 at 17.45.28.webm](https://user-images.githubusercontent.com/4979594/223776946-1e527216-1232-4fb4-a1e7-1c48953c1f78.webm)
 
 ## 💻 How to 
 
