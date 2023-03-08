@@ -1,6 +1,3 @@
-from itertools import chain
-from typing import List, Optional
-
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import declarative_base
 
