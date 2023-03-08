@@ -1,15 +1,15 @@
-# Data labeling app example with Python, Dash and Databricks SQL
+# Data labeling app example with Python, Dash and Databricks SQL 🔥
 
-## Prerequisites
+## ✅ Prerequisites
 
 - Databricks SQL endpoint
 - Locally: Docker, Makefile
 
-## Quick demo
+## 👀 Quick demo
 
 #TODO 
 
-## How to 
+## 💻 How to 
 
 1. Create or start an existing SQL endpoint of any size in your Databricks workspace
 2. On the local machine, clone the repository and create `.env` file in the repository directory. Follow the `.env.sample` for instructions. 
@@ -60,7 +60,7 @@ docker run \
 
 - For ETL part, check the `dbsql_labeling_app_example/loader.py` source code
 
-## Technologies used
+## 🛠️ Technologies used
 
 - [Databricks SQL](https://www.databricks.com/product/databricks-sql)
 - [Databricks SQL Connector](https://docs.databricks.com/dev-tools/python-sql-connector.html)
