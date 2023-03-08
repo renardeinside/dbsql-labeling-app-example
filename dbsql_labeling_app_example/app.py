@@ -1,30 +1,20 @@
-import os
 from random import choice
 
 from dash import Dash, Input, Output, State, ctx, dcc, html
 
 from dbsql_labeling_app_example.crud import DataOperator
 from dbsql_labeling_app_example.mode import debug_mode
-
-external_stylesheets = [
-    # bootstrap
-    {
-        "href": "https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css",
-        "rel": "stylesheet",
-        "integrity": "sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu",
-        "crossorigin": "anonymous",
-    },
-    {"rel": "preconnect", "href": "https://fonts.googleapis.com"},
-    {
-        "rel": "preconnect",
-        "href": "https://fonts.gstatic.com",
-        "crossorigin": "anonymous",
-    },
-    {
-        "href": "https://fonts.googleapis.com/css2?family=Inter&family=Noto+Sans&display=swap",
-        "rel": "stylesheet",
-    },
-]
+from dbsql_labeling_app_example.ui.components import (
+    class_guideline,
+    confirm_button,
+    current_index_view,
+    dropdown,
+    guideline,
+    header,
+    navigation_buttons,
+    text_container,
+)
+from dbsql_labeling_app_example.ui import external_stylesheets
 
 app = Dash(
     __name__, title="Data Labeling App", external_stylesheets=external_stylesheets
@@ -32,112 +22,6 @@ app = Dash(
 operator = DataOperator()
 CLASSES = operator.get_all_classes()
 ALL_IDS = operator.get_all_ids()
-
-header = dcc.Markdown(
-    """
-    ## Sample labeling app, built with [Dash](https://plotly.com/dash/) and [Databricks SQL](https://www.databricks.com/product/databricks-sql) 🔥
-    """,
-    style={
-        "font-size": "46px",
-        "min-height": "64px",
-        "max-height": "96px",
-        "padding-top": "16px",
-        "padding-bottom": "16px",
-    },
-)
-
-guideline = dcc.Markdown(
-    "Please click below to navigate between texts and correct their class labels if required.",
-    style={
-        "font-size": "20px",
-        "padding-top": "20px",
-        "padding-bottom": "5px",
-    },
-)
-
-current_index_view = html.Div(
-    id="current-index-view",
-    style={
-        "text-align": "left",
-    },
-)
-
-text_container = html.Div(
-    dcc.Loading(
-        id="text-block-loading",
-        children=[
-            dcc.Markdown(
-                id="text-container",
-                style={
-                    "font-size": "1.2em",
-                    "font-family": "'Noto Sans', sans-serif",
-                    "height": "50vh",
-                    "overflow-y": "auto",
-                },
-            ),
-        ],
-    ),
-    style={
-        "flex-basis": "90%",
-        "padding-right": "1em",
-    },
-)
-
-navigation_buttons = [
-    html.Button(
-        "⬅️ Previous",
-        id="prev_btn",
-        n_clicks=0,
-        className="btn btn-default btn-lg",
-    ),
-    html.Button(
-        "🔀 Random",
-        id="random_btn",
-        n_clicks=0,
-        className="btn btn-default btn-lg",
-    ),
-    html.Button(
-        "Next ➡️",
-        id="next_btn",
-        n_clicks=0,
-        className="btn btn-default btn-lg",
-    ),
-]
-
-dropdown = html.Div(
-    dcc.Loading(
-        id="dropdown-loader",
-        children=[
-            dcc.Dropdown(
-                CLASSES,
-                id="class-selector",
-                placeholder="Select the class",
-                multi=False,
-                clearable=False,
-                style={
-                    "color": "black",
-                },
-            ),
-        ],
-    ),
-    style={
-        "padding-top": "10px",
-        "padding-bottom": "10px",
-    },
-)
-
-confirm_button = dcc.Loading(
-    id="submit-loading",
-    children=[
-        html.Button(
-            "Confirm",
-            id="confirm_btn",
-            n_clicks=0,
-            className="btn btn-success btn-block btn-md",
-        ),
-        html.Div(id="output-mock", style={"display": "none"}),
-    ],
-)
 
 app.layout = html.Div(
     [
@@ -151,11 +35,8 @@ app.layout = html.Div(
                         text_container,
                         html.Div(
                             [
-                                html.Div(
-                                    "Please select the class below and click confirm",
-                                    style={"text-align": "center"},
-                                ),
-                                dropdown,
+                                class_guideline,
+                                dropdown(CLASSES),
                                 confirm_button,
                             ],
                             style={"flex-basis": "10%", "padding-left": "1em"},
@@ -165,7 +46,7 @@ app.layout = html.Div(
                         "display": "flex",
                         "flex-direction": "row",
                         "padding": "2em",
-                        "margin-bottom": "2em"
+                        "margin-bottom": "2em",
                     },
                 ),
                 html.Div(
